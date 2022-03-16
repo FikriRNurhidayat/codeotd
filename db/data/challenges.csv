@@ -1,0 +1,45 @@
+ID,Title,Description,Body
+bf4fcd54-4971-4c37-995d-051d4c525fd1,String: Palindrome,Find out whether a string is palindrome.,"#Objective
+
+In this test, we create a function that accept a string, and validate whether it's palindrome or not, which returns boolean value.
+
+# Function Description
+
+Complete the `isPalindrome` function in the editor.
+
+`isPalindrome` has the following parameters:
+
+- `string str`: a string, might be word or just bunch of characters
+
+# Returns
+
+- `boolean`: the answer of whether the string is palindrome or not.
+
+# Input Format
+
+Input is basically just `stdin`, which each input will be seperated by line `\n`.
+
+# Constraints
+
+- `str` is alphanumeric that might contain space, comma, dot, semi colon, colon, and quot.
+- Space, comma, dot, semi colon, colon, and quot are not considered as words, hence it can be ignored during the check.
+- Check is case insensitive
+- If the string length is odd, then the middle character will be ignored
+
+# Sample Input 0
+
+```
+Katak
+```
+
+# Sample Output 0
+
+```
+true
+```
+
+# Explanation 0
+
+Given `str = ""Katak""`, we see that first character is `K` and the last character is `k`.
+And if we go inward, it will always have the same character, except the `t` character,
+it does not have pair, and we ignore it from check."

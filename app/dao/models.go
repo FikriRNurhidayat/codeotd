@@ -3,15 +3,30 @@
 package dao
 
 import (
+	"database/sql"
 	"time"
 
 	"github.com/google/uuid"
 )
 
-type Test struct {
-	ID        uuid.UUID `json:"id"`
-	Title     string    `json:"title"`
-	Body      string    `json:"body"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+type Challenge struct {
+	ID          uuid.UUID    `json:"id"`
+	Title       string       `json:"title"`
+	Description string       `json:"description"`
+	Body        string       `json:"body"`
+	CreatedAt   time.Time    `json:"created_at"`
+	UpdatedAt   time.Time    `json:"updated_at"`
+	DeletedAt   sql.NullTime `json:"deleted_at"`
+}
+
+type TestCase struct {
+	ID          uuid.UUID    `json:"id"`
+	Name        string       `json:"name"`
+	Hidden      bool         `json:"hidden"`
+	Input       string       `json:"input"`
+	Output      string       `json:"output"`
+	ChallengeID uuid.UUID    `json:"challenge_id"`
+	CreatedAt   time.Time    `json:"created_at"`
+	UpdatedAt   time.Time    `json:"updated_at"`
+	DeletedAt   sql.NullTime `json:"deleted_at"`
 }

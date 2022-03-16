@@ -1,0 +1,11 @@
+ID,Name,Hidden,Input,Output,Test ID
+8acf4d64-264f-4dc4-a70a-8da0162d0469,Test Case 1,FALSE,Katak,1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+ab900e15-8697-45fc-b773-59386e7b2366,Test Case 2,FALSE,Kodok,1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+eb2f5e1f-c929-4fe7-83cd-b1d835930c4d,Test Case 3,FALSE,racecar,1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+8133481f-2698-4c01-bc2f-6d6d39aa5688,Test Case 4,FALSE,my gym,1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+2e46e502-b6ab-4e8d-b798-72c086d92864,Test Case 5,FALSE,Jokowi,0,bf4fcd54-4971-4c37-995d-051d4c525fd1
+a53550c6-5b31-4594-904f-dd8f8080b0e8,Test Case 6,TRUE,Don't nod.,1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+e0efde4d-56da-4219-9969-555fc511d9a7,Test Case 7,TRUE,"I did, did I?",1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+f6d2db61-4859-4ff5-b986-a5ba144e7a1c,Test Case 8,TRUE,"Eva, can I see bees in a cave?",1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+2428c7d2-b291-4546-a6bf-e06994b9d7c8,Test Case 9,TRUE,Was it a cat I saw?,1,bf4fcd54-4971-4c37-995d-051d4c525fd1
+5b55cb49-866c-42b3-abed-43ac06dce69a,Test Case 10,TRUE,"Word, phrase, number",0,bf4fcd54-4971-4c37-995d-051d4c525fd1

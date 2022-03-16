@@ -1,4 +1,4 @@
-module github.com/fikrirnurhidayat/codeot-svc
+module github.com/fikrirnurhidayat/codeotd
 
 go 1.17
 

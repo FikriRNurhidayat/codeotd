@@ -1,12 +1,16 @@
 package controller
 
 import (
+  "strconv"
   "net/http"
   "encoding/json"
+  "log"
   "errors"
   "fmt"
   "io"
   "strings"
+
+  "github.com/fikrirnurhidayat/codeotd/app/entity"
 )
 
 type okResponse struct {
@@ -118,4 +122,42 @@ func decodeJSONBody(w http.ResponseWriter, r *http.Request, dst interface{}) err
 func encodeJSONBody(w http.ResponseWriter, dst interface{}) {
   encoder := json.NewEncoder(w)
   encoder.Encode(dst)
+}
+
+func getPagination(r *http.Request) (entity.Pagination, error) {
+  var pagination entity.Pagination
+
+  pageQuery, err := strconv.ParseInt(r.URL.Query().Get("page"), 10, 32) 
+
+  if err != nil {
+    if strings.EqualFold(err.Error(), "strconv.ParseInt: parsing \"\": invalid syntax") {
+      pageQuery = 0
+    } else {
+      return pagination, errors.New("page must be a valid number")
+    }
+  }
+
+  pageSizeQuery, err := strconv.ParseInt(r.URL.Query().Get("page_size"), 10, 32)
+
+  if err != nil {
+    if strings.EqualFold(err.Error(), "strconv.ParseInt: parsing \"\": invalid syntax") {
+      pageSizeQuery = 0
+    } else {
+      return pagination, errors.New("page_size must be a valid number")
+    }
+  }
+
+  pagination = entity.Pagination{
+    Page: int32(pageQuery),
+    PageSize: int32(pageSizeQuery),
+  }
+
+  return pagination, nil
+}
+
+func LogRequest(handler http.Handler) http.Handler {
+  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		handler.ServeHTTP(w, r)
+		log.Printf("[INFO] %s %s %s\n", r.RemoteAddr, r.Method, r.URL)
+	})
 }

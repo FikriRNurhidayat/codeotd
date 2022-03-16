@@ -3,8 +3,8 @@ package main
 import (
   "log"
 
-  "github.com/fikrirnurhidayat/codeot-svc/app"
-  "github.com/fikrirnurhidayat/codeot-svc/app/config"
+  "github.com/fikrirnurhidayat/codeotd/app"
+  "github.com/fikrirnurhidayat/codeotd/app/config"
 )
 
 func main() {

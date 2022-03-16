@@ -54,12 +54,9 @@ db-seed:
 	cp ./db/seeds.sql ./db/seeds.sql.bak
 	envsubst < ./db/seeds.sql.bak > ./db/seeds.sql
 	sed -i 's/COPY/\\copy/g' ./db/seeds.sql
-	psql -a -f ./db/seeds.sql ${DATABASE_URL}
-	psql -a -f ./db/reset.sql ${DATABASE_URL}
+	psql -a -f ./db/seeds.sql ${DATABASE_URL} 1> /dev/null
 	mv ./db/seeds.sql.bak ./db/seeds.sql
 
-db-clean:
-	psql -a -f ./db/clean.sql ${DATABASE_URL}
-	$(MAKE) migrate 
+db-clean: db-drop db-create db-migrate
 
 db-setup: db-create db-migrate db-seed
