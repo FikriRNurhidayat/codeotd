@@ -8,6 +8,7 @@ endif
 DATABASE_URL=postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?sslmode=${DATABASE_SSL_MODE}
 
 setup:
+	go mod vendor
 	docker run \
 		--rm \
 		-u 1100:1100 \
@@ -26,6 +27,16 @@ dao:
 		-v ${PWD}:/opt/codeot \
 		-w /opt/codeot \
 		kjconroy/sqlc generate
+
+mock:
+	rm -rf mocks
+	docker run \
+		-it \
+		--rm \
+		-u 1000:1000 \
+		-v ${PWD}:/service \
+		-w /service \
+		vektra/mockery --all --keeptree --dir app
 
 db-migration:
 	$(eval timestamp := $(shell date +%s))
