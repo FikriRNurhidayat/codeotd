@@ -1,2 +1,5 @@
 vendor
 .env
+junit.xml
+*.cov
+*.out

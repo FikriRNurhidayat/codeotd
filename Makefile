@@ -7,14 +7,16 @@ endif
 
 DATABASE_URL=postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?sslmode=${DATABASE_SSL_MODE}
 
-setup:
-	go mod vendor
+init:
 	docker run \
 		--rm \
 		-u 1100:1100 \
 		-v ${PWD}:/opt/codeot \
 		-w /opt/codeot \
 		kjconroy/sqlc init
+
+setup:
+	go mod vendor
 
 develop:
 	go run main.go
@@ -27,6 +29,11 @@ dao:
 		-v ${PWD}:/opt/codeot \
 		-w /opt/codeot \
 		kjconroy/sqlc generate
+
+test:
+	go install gotest.tools/gotestsum@latest 1> /dev/null
+	gotestsum --format testname --junitfile junit.xml -- -coverpkg=./app/... -coverprofile=cover.out ./app/... | grep -v "^coverage:"
+	go tool cover -func cover.out | grep "total:"
 
 mock:
 	rm -rf mocks
