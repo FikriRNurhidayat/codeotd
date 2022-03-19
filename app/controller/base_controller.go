@@ -161,3 +161,10 @@ func LogRequest(handler http.Handler) http.Handler {
 		log.Printf("[INFO] %s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 	})
 }
+
+// GET /
+func HandleGetRoot(w http.ResponseWriter, _ *http.Request) {
+  w.Header().Set("Content-Type", "application/json")
+  w.WriteHeader(http.StatusOK)
+  encodeJSONBody(w, ok("I'm fine, you know.", nil))
+}

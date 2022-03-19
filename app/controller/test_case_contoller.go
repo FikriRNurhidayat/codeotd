@@ -150,6 +150,12 @@ func (c *testCaseController) HandleGetTestCases(w http.ResponseWriter, r *http.R
   params := mux.Vars(r)
   challengeId, err := uuid.Parse(params["id"])
 
+  if err != nil {
+    w.WriteHeader(http.StatusBadRequest)
+    encodeJSONBody(w, fail(err))
+    return
+  }
+
   pagination, err := getPagination(r) 
 
   if err != nil {

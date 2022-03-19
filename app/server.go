@@ -66,6 +66,9 @@ func (b *Backend) registerRepository(dao *dao.Queries) {
 func (b *Backend) registerRouter() {
   router := mux.NewRouter()
 
+  // Meta Service
+  router.HandleFunc("/", controller.HandleGetRoot).Methods("GET")
+
   // Challenges Service
   router.HandleFunc("/api/v1/challenges", b.challengeController.HandlePostChallenge).Methods("POST")
   router.HandleFunc("/api/v1/challenges", b.challengeController.HandleGetChallenges).Methods("GET")
